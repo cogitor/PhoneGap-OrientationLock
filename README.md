@@ -1,18 +1,23 @@
 # OrientationLock - Android PhoneGap Plugin for locking/unlocking the screen orientation from JS #
 
+</br>
+</br>
+
 ## Calling the plugin ##
 
-From your JavaScript code call window.plugins.OrientationLock.unlock() to unlock orientation, <br/>
-window.plugins.Orientation.lock("portrait") or window.plugins.OrientationLock.lock("landscape") to lock your screen to the specified orientation.
+From your JavaScript code call <pre>window.plugins.OrientationLock.unlock()</pre> to unlock orientation, <br/>
+<pre>window.plugins.Orientation.lock("portrait")</pre> or <pre>window.plugins.OrientationLock.lock("landscape")</pre> 
+to lock your screen to the specified orientation. </br></br>
 
 To start your PhoneGap/Cordova application pre-locked place 
 <pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</pre> or 
-<pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</pre> in the onCreate() of your DroidGap activity.
+<pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</pre> 
+in the onCreate() of your DroidGap activity. </br>
 
 Once unlocked, you can track orientation changes with the regular 'orientationchange' event:
-window.addEventListener("orientationchange", dojo.hitch(this, function() {
+<pre>window.addEventListener("orientationchange", dojo.hitch(this, function() {
   alert(window.orientation);
-}, false);
+}, false);</pre>
 
 ## Adding the Plugin to your project ##
 
