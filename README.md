@@ -9,6 +9,11 @@ To start your PhoneGap/Cordova application pre-locked place
 <pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</pre> or 
 <pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</pre> in the onCreate() of your DroidGap activity.
 
+Once unlocked, you can track orientation changes with the regular 'orientationchange' event:
+window.addEventListener("orientationchange", dojo.hitch(this, function() {
+  alert(window.orientation);
+}, false);
+
 ## Adding the Plugin to your project ##
 
 Using this plugin requires [Android PhoneGap](http://github.com/phonegap/phonegap-android).
