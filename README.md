@@ -23,8 +23,8 @@ Once unlocked, you can track orientation changes with the regular 'orientationch
 
 Using this plugin requires [Android PhoneGap](http://github.com/phonegap/phonegap-android).
 
-To enable it..
+To enable it..<br>
 1) Put the orientationLock.js in the www/ directory of your PhoneGap project and reference it from your HTML. <br/>
 2) Put the OrientationLock.java in src/com/phonegap/plugins/ and add the following line in your res/xml/config.xml:
 <br/>
-&lt;plugin name="OrientationLock" value="com.phonegap.plugins.OrientationLock"/&gt;
+`<plugin name="OrientationLock" value="com.phonegap.plugins.OrientationLock"/>`
