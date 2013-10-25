@@ -1,29 +1,30 @@
-# OrientationLock - Android PhoneGap Plugin for locking/unlocking the screen orientation from JS #
+# OrientationLock #
 
-</br>
-</br>
+Android Cordova plugin for locking/unlocking the screen orientation from Javascript
 
 ## Calling the plugin ##
 
-From your JavaScript code call <pre>window.plugins.OrientationLock.unlock()</pre> to unlock orientation, <br/>
-<pre>window.plugins.Orientation.lock("portrait")</pre> or <pre>window.plugins.OrientationLock.lock("landscape")</pre> 
-to lock your screen to the specified orientation. </br></br>
+From your JavaScript code call 
+`window.plugins.orientationLock.unlock()` to unlock orientation,
+`window.plugins.orientationLock.lock("portrait")` or `window.plugins.orientationLock.lock("landscape")` 
+to lock your screen to the specified orientation.
 
-To start your PhoneGap/Cordova application pre-locked place 
-<pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</pre> or 
-<pre>setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</pre> 
-in the onCreate() of your DroidGap activity. </br>
+To start your Cordova application pre-locked place 
+`setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);` or 
+`setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);` 
+in the `onCreate()` of your Cordova activity.
 
-Once unlocked, you can track orientation changes with the regular 'orientationchange' event:
-<pre>window.addEventListener("orientationchange", dojo.hitch(this, function() {
-  alert(window.orientation);
-}, false);</pre>
+Once unlocked, you can track orientation changes with the regular `orientationchange` event:
+
+    window.addEventListener("orientationchange", function() {
+       alert(window.orientation);
+    });
 
 ## Adding the Plugin to your project ##
 
-Using this plugin requires [Android PhoneGap](http://github.com/phonegap/phonegap-android).
+Using this plugin requires [Android Apache Cordova](https://github.com/apache/cordova-android).
 
-To enable it put the orientationLock.js in the www/ directory of your PhoneGap project, <br/>
-The OrientationLock.java in src/com/phonegap/plugins/ and add the following line in your res/plugins.xml:
-<br/>
-&lt;plugin name="OrientationLock" value="com.phonegap.plugins.OrientationLock"/&gt;
+To enable it put the `orientationLock.js` in the `www/` directory of your Cordova project,
+the `OrientationLock.java` in `src/com/phonegap/plugins/` and add the following line in your `res/plugins.xml`
+
+    <plugin name="OrientationLock" value="com.phonegap.plugins.OrientationLock"/>

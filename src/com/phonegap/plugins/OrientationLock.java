@@ -5,15 +5,14 @@ import org.json.JSONException;
 
 import android.content.pm.ActivityInfo;
 
-import org.apache.cordova.*;
-import org.apache.cordova.api.Plugin;
-import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.api.*;
+
 /**
  * 
  * Android Phonegap Plugin for locking/unlocking the orientation from JS code
  *
  */
-public class OrientationLock extends Plugin {
+public class OrientationLock extends CordovaPlugin {
 
 	private static final String LANSCAPE = "landscape";
 	private static final String PORTRAIT = "portrait";
@@ -22,20 +21,20 @@ public class OrientationLock extends Plugin {
     }
 
     public void unlock() {
-    	((DroidGap)this.ctx).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+    	this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
     
     public void lock(String orientation) {
     	if (orientation.equals(PORTRAIT))
-    		((DroidGap)this.ctx).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    		this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     	else
-    		((DroidGap)this.ctx).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    		this.cordova.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
 	    
 	
 	@Override
-	public PluginResult execute(String action, JSONArray arguments, String callbackId) {
+	public boolean execute(String action, JSONArray arguments, CallbackContext callbackContext) {
 		if (action.equals("lock")) {
 			
 			try {
@@ -43,23 +42,26 @@ public class OrientationLock extends Plugin {
 				
 				if (orientation!=null && (orientation.equals(LANSCAPE) ||  orientation.equals(PORTRAIT))) {
 					this.lock(orientation);
-					return new PluginResult(PluginResult.Status.OK);
+					callbackContext.success();
+					return true;
 				}
 				else{
-					return new PluginResult(PluginResult.Status.INVALID_ACTION);
+					return false;
 				}
 				
 			} catch (JSONException e) {
-				return new PluginResult(PluginResult.Status.JSON_EXCEPTION);
+				callbackContext.error("JSON_EXCEPTION");
+				return true;
 			}
 			
 		} 
         else if (action.equals("unlock")) {
             this.unlock();
-            return new PluginResult(PluginResult.Status.OK);
+            callbackContext.success();
+            return true;
         }
 		else {
-			return new PluginResult(PluginResult.Status.INVALID_ACTION);
+			return false;
 		}
 	}
 }
