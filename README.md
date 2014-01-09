@@ -22,9 +22,8 @@ Once unlocked, you can track orientation changes with the regular `orientationch
 
 ## Adding the Plugin to your project ##
 
-Using this plugin requires [Android Apache Cordova](https://github.com/apache/cordova-android).
+Using this plugin requires [Apache Cordova for Android](https://github.com/apache/cordova-android).
+Within your project, run the following command:
 
-To enable it put the `orientationLock.js` in the `www/` directory of your Cordova project,
-the `OrientationLock.java` in `src/com/phonegap/plugins/` and add the following line in your `res/plugins.xml`
+    cordova plugin add https://github.com/cogitor/PhoneGap-OrientationLock.git
 
-    <plugin name="OrientationLock" value="com.phonegap.plugins.OrientationLock"/>
